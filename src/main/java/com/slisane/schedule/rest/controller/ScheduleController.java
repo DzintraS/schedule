@@ -4,16 +4,18 @@ import com.slisane.schedule.rest.model.Task;
 import com.slisane.schedule.service.ScheduleService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @Slf4j
+@Validated
 @RestController
-//@RequestMapping("/")
 @AllArgsConstructor
 public class ScheduleController {
 
     private ScheduleService scheduleService;
-//    private Task task;
 
     @GetMapping(value = "/test")
     public Object testController() {
@@ -26,16 +28,17 @@ public class ScheduleController {
     }
 
     @PatchMapping(value = "/task")
-    public Object updateTask(@RequestBody Task task) {
+    public Object updateTask(
+            @Valid @RequestBody Task task) {
         return scheduleService.updateTask(task);
     }
 
-    @GetMapping(value = "/test")
+    @DeleteMapping(value = "/task")
     public Object deleteTask(@RequestParam(value = "id") Long id) {
         return scheduleService.deleteTask(id);
     }
 
-    @GetMapping(value = "/test")
+    @PostMapping(value = "/taskByDate")
     public Object getTasksByDate() {
         return scheduleService.test();
     }
@@ -45,6 +48,10 @@ public class ScheduleController {
         return " just testing";
 
     }
+
+
+    //TODO add logic for getting by days
+    //TODO RESEARCH ZonedDateTime , Formatter and validation
 
 
 }

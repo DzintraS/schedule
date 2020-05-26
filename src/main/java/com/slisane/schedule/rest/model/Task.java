@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.ZonedDateTime;
 
 @Data
@@ -19,12 +21,16 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotBlank
     private String name;
 
     private String description;
 
+    @NotNull()
     private Frequency frequency;
 
+    //    @NotNull
+//    @Pattern(regexp = "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{6}\\+\\d{2}:\\d{2}", message = "date does not match pattern") //TODO add validation
     private ZonedDateTime date;
 
     private boolean isCompleted;
@@ -39,4 +45,11 @@ public class Task {
 
     public void createTask(String task1, String description, Frequency daily, ZonedDateTime now, boolean b) {
     }
+
+    @Override
+    public String toString() {
+        return String.format("[(%d) %s | freq: %s | date: %s | done: %s ]", id, name, frequency, date, isCompleted);
+    }
+
+    //TODO RESEARCH fix jsr303 validation messages are not returned
 }

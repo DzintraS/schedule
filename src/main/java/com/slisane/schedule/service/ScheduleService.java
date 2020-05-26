@@ -3,6 +3,7 @@ package com.slisane.schedule.service;
 import com.slisane.schedule.persistence.TaskRepository;
 import com.slisane.schedule.rest.model.Task;
 import com.slisane.schedule.rest.model.enumeration.Frequency;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,7 @@ import java.util.Optional;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class ScheduleService {
 
     private TaskRepository taskRepository;
@@ -29,7 +30,6 @@ public class ScheduleService {
     }
 
     public List<Task> updateTask(Task updatedTask) {
-        taskRepository.findById(updatedTask).ifPresent(task -> taskRepository.delete(task));
         taskRepository.save(updatedTask);
         return taskRepository.findAll();
     }
@@ -38,7 +38,7 @@ public class ScheduleService {
         Optional<Task> task = taskRepository.findById(id);
         if (task.isPresent()) {
             taskRepository.delete(task.get());
-            log.info("Task: " + task + "has been deleted.");
+            log.info("Task: " + task.get() + " has been deleted.");
         } else {
             log.error("Cannot delete task " + id + ": task not found.");
         }
