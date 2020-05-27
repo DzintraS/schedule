@@ -4,7 +4,6 @@ import com.slisane.schedule.persistence.TaskRepository;
 import com.slisane.schedule.rest.model.Task;
 import com.slisane.schedule.rest.model.enumeration.Frequency;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +18,7 @@ public class ScheduleService {
 
     private TaskRepository taskRepository;
 
-    public Object test() {
+    public Object getAllTasks() {
         taskRepository.save(new Task("task1", "description1", Frequency.DAILY, ZonedDateTime.now(), false));
         return taskRepository.findAll();
     }
@@ -31,6 +30,12 @@ public class ScheduleService {
 
     public List<Task> updateTask(Task updatedTask) {
         taskRepository.save(updatedTask);
+        return taskRepository.findAll();
+    }
+
+    public List<Task> updateTask(Long id, boolean isCompleted) {
+        //TODO implement logic
+        log.error("[!] service method not yet implemented");
         return taskRepository.findAll();
     }
 
