@@ -1,7 +1,8 @@
 <!-- go to http://localhost:8080/ while app is running to access this page -->
 <!-- TODO create overall page to host thymeleaf fragments -->
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <body>
 <h1>Hello Homepage!</h1>
+<span th:insert="fragments :: test"></span>
 </body>
 </html>
