@@ -34,8 +34,14 @@ public class ScheduleService {
     }
 
     public List<Task> updateTask(Long id, boolean isCompleted) {
-        //TODO implement logic
-        log.error("[!] service method not yet implemented");
+        Optional<Task> task = taskRepository.findById(id);
+        if (task.isPresent()) {
+            task.get().setCompleted(isCompleted);
+            updateTask(task.get());
+            log.info("Task: " + task.get() + " has been updated");
+        } else {
+            log.error("Cannot update task " + id + ": task not found.");
+        }
         return taskRepository.findAll();
     }
 
@@ -52,5 +58,6 @@ public class ScheduleService {
 
     public List<Task> getTasksByDate(ZonedDateTime date) {
         return taskRepository.findByDate(date);
+
     }
 }
