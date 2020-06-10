@@ -22,7 +22,7 @@ public class HomepageController {
         //this is a method that returns a homepage. Model contains attributes that are used to create it
 
         //getting tasks from our rest controller
-        List<Task> todayTasks = scheduleController.getTasksByDate(ZonedDateTime.now());
+        List<Task> todayTasks = scheduleController.getAlltasks();
 
         //sorting through them using stream and adding them to the Model as attributes
         model.addAttribute("todayTasks", todayTasks.stream()

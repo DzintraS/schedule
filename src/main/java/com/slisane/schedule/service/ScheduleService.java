@@ -18,8 +18,8 @@ public class ScheduleService {
 
     private TaskRepository taskRepository;
 
-    public Object getAllTasks() {
-        taskRepository.save(new Task("task1", "description1", Frequency.DAILY, ZonedDateTime.now(), false));
+    public List<Task> getAllTasks() {
+//        taskRepository.save(new Task("task1", "description1", Frequency.DAILY, ZonedDateTime.now(), false));
         return taskRepository.findAll();
     }
 
