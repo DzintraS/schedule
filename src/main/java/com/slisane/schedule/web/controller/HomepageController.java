@@ -25,12 +25,12 @@ public class HomepageController {
         List<Task> todayTasks = scheduleController.getAlltasks();
 
         //sorting through them using stream and adding them to the Model as attributes
-        model.addAttribute("todayTasks", todayTasks.stream()
+        model.addAttribute("todayTasksNotDone", todayTasks.stream()
                 .filter(task -> !task.isCompleted())
                 .collect(Collectors.toList())
         );
         model.addAttribute("todayTasksDone", todayTasks.stream()
-                .filter(Task::isCompleted)
+                .filter(task-> task.isCompleted())
                 .collect(Collectors.toList())
         );
 

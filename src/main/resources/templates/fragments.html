@@ -8,15 +8,38 @@
 </div>
 
 <span th:fragment="tasks_active">
-    <div th:each="task: ${todayTasks}">
+    <div th:each="task: ${todayTasksNotDone}">
         <hr>
         <h1 th:text="${task.name}">Name</h1>
         <p th:text="${task.description}">decription goes here</p>
         <p th:text="${task.date}">Date</p>
+        <p th:text="${task.isCompletedToString()}">isCompleted</p>
+        <div th:insert="fragments :: nav_complete_task"></div>
         <hr>
         <br>
     </div>
 </span>
 
+<span th:fragment="tasks_finished">
+    <div th:each="taskNotDone: ${todayTasksDone}">
+        <hr>
+        <h1 th:text="${taskNotDone.name}">Name</h1>
+        <p th:text="${taskNotDone.description}">decription goes here</p>
+        <p th:text="${taskNotDone.date}">Date</p>
+        <p th:text="${taskNotDone.isCompletedToString()}">isCompleted</p>
+        <div th:insert="fragments :: nav_task_notCompleted"></div>
+        <hr>
+        <br>
+    </div>
+</span>
 
+<span th:fragment="nav_complete_task">
+    <button type="button" >Complete task</button>
+
+</span>
+
+<span th:fragment="nav_task_notCompleted">
+ <button type="button" >Mark as not completed </button>
+
+</span>
 </html>

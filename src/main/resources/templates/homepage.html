@@ -3,6 +3,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 <h1>Hello Homepage!</h1>
+<h2>Tasks to do: </h2>
 <span th:insert="fragments :: tasks_active"></span>
+<h2>Finished tasks:</h2>
+<span th:insert="fragments :: tasks_finished"></span>
 </body>
 </html>

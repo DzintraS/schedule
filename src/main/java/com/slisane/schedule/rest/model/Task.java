@@ -51,5 +51,9 @@ public class Task {
         return String.format("[(%d) %s | freq: %s | date: %s | done: %s ]", id, name, frequency, date, isCompleted);
     }
 
+    public String isCompletedToString() {
+        return isCompleted ? "Completed" : "Not completed";
+    }
+
     //TODO RESEARCH fix jsr303 validation messages are not returned
 }
