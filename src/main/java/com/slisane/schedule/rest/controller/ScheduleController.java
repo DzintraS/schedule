@@ -1,5 +1,6 @@
 package com.slisane.schedule.rest.controller;
 
+import com.slisane.schedule.persistence.TaskRepository;
 import com.slisane.schedule.rest.model.Task;
 import com.slisane.schedule.service.ScheduleService;
 import lombok.AllArgsConstructor;
@@ -22,7 +23,7 @@ public class ScheduleController {
     private ScheduleService scheduleService;
 
     @GetMapping(value = "/task")
-    public Object getAlltasks() {
+    public List<Task> getAlltasks() {
         return scheduleService.getAllTasks();
     }
 
