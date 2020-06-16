@@ -34,12 +34,12 @@
 </span>
 
 <span th:fragment="nav_complete_task">
-    <button type="button" >Complete task</button>
+    <button type="button" th:onclick="javascript:callCompleteTask([[${task}]])">Complete task</button>
 
 </span>
 
 <span th:fragment="nav_task_notCompleted">
- <button type="button" >Mark as not completed </button>
+ <button type="button" th:onclick="javascript:callUncompleteTask([[${taskNotDone}]])">Mark as not completed </button>
 
 </span>
 </html>
