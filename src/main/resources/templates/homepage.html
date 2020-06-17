@@ -1,14 +1,28 @@
 <!-- go to http://localhost:8080/ while app is running to access this page -->
 <!-- TODO create overall page to host thymeleaf fragments -->
 <html xmlns:th="http://www.thymeleaf.org">
-<body>
-<h1>Hello Homepage!</h1>
-<h2>Tasks to do: </h2>
-<span th:insert="fragments :: tasks_active"></span>
-<h2>Finished tasks:</h2>
-<span th:insert="fragments :: tasks_finished"></span>
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+<div class="container">
+    <h1>Hello Homepage!</h1>
+    <h2>Tasks to do: </h2>
+    <div class="row">
+        <span th:insert="fragments :: tasks_active"></span>
+    </div>
+    <h2>Finished tasks:</h2>
+    <div class="row">
+        <span th:insert="fragments :: tasks_finished"></span>
+    </div>
+</div>
 <script src="/js/script.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
 
 <!--TODO add styles -->
 <!--TODO add failure indicator -->
