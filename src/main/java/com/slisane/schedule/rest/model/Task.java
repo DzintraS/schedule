@@ -1,6 +1,7 @@
 package com.slisane.schedule.rest.model;
 
 import com.slisane.schedule.rest.model.enumeration.Frequency;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -27,7 +28,7 @@ public class Task {
     private String description;
 
     @NotNull()
-    private Frequency frequency;
+    private String frequency;
 
     //    @NotNull
 //    @Pattern(regexp = "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{6}\\+\\d{2}:\\d{2}", message = "date does not match pattern") //TODO add validation
@@ -38,7 +39,7 @@ public class Task {
     public Task(String name, String description, Frequency frequency, ZonedDateTime date, boolean isCompleted) {
         this.name = name;
         this.description = description;
-        this.frequency = frequency;
+        this.frequency = frequency.name();
         this.date = date;
         this.isCompleted = isCompleted;
     }

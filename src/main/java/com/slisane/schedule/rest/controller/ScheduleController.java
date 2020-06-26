@@ -1,6 +1,8 @@
 package com.slisane.schedule.rest.controller;
 
-import com.slisane.schedule.persistence.TaskRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.slisane.schedule.rest.model.Task;
 import com.slisane.schedule.service.ScheduleService;
 import lombok.AllArgsConstructor;
@@ -22,6 +24,8 @@ public class ScheduleController {
 
     private ScheduleService scheduleService;
 
+    private ObjectMapper mapper = new ObjectMapper();
+
     @GetMapping(value = "/task")
     public List<Task> getAlltasks() {
         return scheduleService.getAllTasks();
@@ -33,7 +37,7 @@ public class ScheduleController {
     }
 
     @PostMapping(value = "/task")
-    public Object saveTask(@RequestBody Task task) {
+    public Object saveTask(@RequestBody Task task) throws JsonProcessingException {
         return scheduleService.saveTask(task);
     }
 

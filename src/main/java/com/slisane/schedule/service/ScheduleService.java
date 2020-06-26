@@ -2,7 +2,6 @@ package com.slisane.schedule.service;
 
 import com.slisane.schedule.persistence.TaskRepository;
 import com.slisane.schedule.rest.model.Task;
-import com.slisane.schedule.rest.model.enumeration.Frequency;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -19,7 +18,11 @@ public class ScheduleService {
     private TaskRepository taskRepository;
 
     public List<Task> getAllTasks() {
-//        taskRepository.save(new Task("task1", "description1", Frequency.DAILY, ZonedDateTime.now(), false));
+        return taskRepository.findAll();
+    }
+
+    public List<Task> saveTasks(List<Task> tasks) {
+        taskRepository.saveAll(tasks);
         return taskRepository.findAll();
     }
 

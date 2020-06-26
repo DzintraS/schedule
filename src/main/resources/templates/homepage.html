@@ -10,9 +10,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
+<nav>
+    <div class="nav-wrapper">
+        <a href="#!" class="brand-logo">Schedule 👍</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a class="modal-trigger" href="#addModal"><i class="material-icons left">add</i>Add task</a></li>
+
+            <!-- Modal Form -->
+            <div id="addModal" class="modal">
+                <div class="modal-content">
+
+                    <form class="col s12 form">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input placeholder="Task Name" id="name" name="name" type="text">
+                                <label for="name">Name</label>
+                            </div>
+
+                            <div class="input-field col s6">
+                                <select id="frequency" name="frequency">
+                                    <option value="" disabled selected>Choose frequency</option>
+                                    <option value="DAILY">Daily</option>
+                                    <option value="WEEKLY">Weekly</option>
+                                    <option value="MONTHLY">Monthly</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea id="description" class="materialize-textarea" name="description"></textarea>
+                                <label for="description">Task Description</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button class="btn waves-effect waves-light blue modal-close" type="submit"> <i class="material-icons left">save</i> Add task </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </ul>
+    </div>
+</nav>
 <div class="container">
-    <h1>Hello Homepage!</h1>
-    <h2>Tasks to do: </h2>
+
+<h2>Tasks to do: </h2>
     <div class="row">
         <span th:insert="fragments :: tasks_active"></span>
     </div>
@@ -21,10 +62,13 @@
         <span th:insert="fragments :: tasks_finished"></span>
     </div>
 </div>
-<script src="/js/script.js"></script>
-<script type="text/javascript" src="js/materialize.min.js"></script>
 
-<!--TODO add styles -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="/js/script.js"></script>
+
+<script>M.AutoInit();</script> <!--Init Materialize-->
+
 <!--TODO add failure indicator -->
 <!--TODO add/edit/delete task from homepage-->
 
