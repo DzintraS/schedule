@@ -12,11 +12,7 @@
 	<artifactId>schedule</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>schedule</name>
-	<description>Demo project for Spring Boot, schelude</description>
-
-	<properties>
-		<java.version>11</java.version>
-	</properties>
+	<description>Demo project for Spring Boot, schedule</description>
 
 	<dependencies>
 		<dependency>
