@@ -2,9 +2,7 @@ package com.slisane.schedule.service;
 
 import com.slisane.schedule.persistence.TaskRepository;
 import com.slisane.schedule.rest.model.Task;
-import com.slisane.schedule.rest.model.enumeration.Frequency;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +17,12 @@ public class ScheduleService {
 
     private TaskRepository taskRepository;
 
-    public Object test() {
-        taskRepository.save(new Task("task1", "description1", Frequency.DAILY, ZonedDateTime.now(), false));
+    public List<Task> getAllTasks() {
+        return taskRepository.findAll();
+    }
+
+    public List<Task> saveTasks(List<Task> tasks) {
+        taskRepository.saveAll(tasks);
         return taskRepository.findAll();
     }
 
@@ -31,6 +33,18 @@ public class ScheduleService {
 
     public List<Task> updateTask(Task updatedTask) {
         taskRepository.save(updatedTask);
+        return taskRepository.findAll();
+    }
+
+    public List<Task> updateTask(Long id, boolean isCompleted) {
+        Optional<Task> task = taskRepository.findById(id);
+        if (task.isPresent()) {
+            task.get().setCompleted(isCompleted);
+            updateTask(task.get());
+            log.info("Task: " + task.get() + " has been updated");
+        } else {
+            log.error("Cannot update task " + id + ": task not found.");
+        }
         return taskRepository.findAll();
     }
 
@@ -47,5 +61,6 @@ public class ScheduleService {
 
     public List<Task> getTasksByDate(ZonedDateTime date) {
         return taskRepository.findByDate(date);
+
     }
 }
