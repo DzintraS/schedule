@@ -38,6 +38,9 @@ public class ScheduleController {
 
     @PostMapping(value = "/task")
     public Object saveTask(@RequestBody Task task) throws JsonProcessingException {
+        if (task.getDate()==null){
+            task.setDate(ZonedDateTime.now());
+        }
         return scheduleService.saveTask(task);
     }
 
@@ -62,6 +65,6 @@ public class ScheduleController {
         return scheduleService.deleteTask(id);
     }
 
-    //TODO add logic for getting by days
-    //TODO RESEARCH ZonedDateTime , Formatter and validation
+
+
 }
