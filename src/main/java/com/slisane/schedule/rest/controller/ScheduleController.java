@@ -14,7 +14,7 @@ import javax.validation.Valid;
 import java.time.ZonedDateTime;
 import java.util.List;
 
-@Slf4j
+//@Slf4js
 @Validated
 @RestController
 @AllArgsConstructor
