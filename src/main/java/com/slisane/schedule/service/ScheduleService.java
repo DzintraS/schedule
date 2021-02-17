@@ -10,11 +10,9 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.ZonedDateTime;
-import java.time.temporal.ChronoUnit;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
+
 
 
 @Slf4j
@@ -86,19 +84,15 @@ public class ScheduleService {
         return taskRepository.findByDate(date);
     }
 
-    static long zoneDateTimeDifference(ZonedDateTime d1, ZonedDateTime d2, ChronoUnit unit) {
-        return unit.between(d1, d2);
-    }
-
-    @Scheduled(cron = "0 * * * * *")
-    public void updateFailureIndicator() {
-        getAllTasks().forEach(task -> {
-            if (!task.isCompleted()) {
-                task.setDaysFailed(task.getDaysFailed() + 1);
-                updateTask(task);
-            }
-        });
-        log.info("Scheduled triggered ");
-    }
+//    @Scheduled(cron = "0 * * * * *")
+//    public void updateFailureIndicator() {
+//        getAllTasks().forEach(task -> {
+//            if (!task.isCompleted()) {
+//                task.setDaysFailed(task.getDaysFailed() + 1);
+//                updateTask(task);
+//            }
+//        });
+//        log.info("Scheduled triggered ");
+//    }
 }
 

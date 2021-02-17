@@ -1,10 +1,9 @@
 package com.slisane.schedule.rest.model;
 
 import com.slisane.schedule.rest.model.enumeration.Frequency;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.scheduling.annotation.Scheduled;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,19 +36,16 @@ public class Task {
 
     private boolean isCompleted;
 
-    private int daysFailed;
 
-    private int previousDaysFailed;
+    private Frequency frequency;
 
-    public Task(Long id, @NotBlank String name, String description, @NotNull() String frequency, ZonedDateTime date, boolean isCompleted, int daysFailed, int previousDaysFailed) {
+    public Task(Long id, @NotBlank String name, String description, @NotNull() Frequency frequency, ZonedDateTime date, boolean isCompleted) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.frequency = frequency;
         this.date = date;
         this.isCompleted = isCompleted;
-        this.daysFailed = daysFailed;
-        this.previousDaysFailed = previousDaysFailed;
     }
 
 

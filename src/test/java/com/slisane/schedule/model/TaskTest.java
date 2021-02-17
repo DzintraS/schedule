@@ -11,7 +11,7 @@ import static com.slisane.schedule.ScheduleTestBase.MAPPER;
 import static com.slisane.schedule.ScheduleTestBase.RESOURCES_DIR;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TaskTest {
+class TaskTest {
 
     @Test
     public void testSerialization() throws IOException {

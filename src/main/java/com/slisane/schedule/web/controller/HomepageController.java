@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,7 +29,7 @@ public class HomepageController {
                 .collect(Collectors.toList())
         );
         model.addAttribute("todayTasksFinished", todayTasks.stream()
-                .filter(task-> task.isCompleted())
+                .filter(Task::isCompleted)
                 .collect(Collectors.toList())
         );
 

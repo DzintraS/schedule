@@ -1,7 +1,5 @@
 package com.slisane.schedule.rest.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.slisane.schedule.rest.model.Task;
 import com.slisane.schedule.service.ScheduleService;
@@ -37,7 +35,7 @@ public class ScheduleController {
     }
 
     @PostMapping(value = "/task")
-    public Object saveTask(@RequestBody Task task) throws JsonProcessingException {
+    public Object saveTask(@RequestBody Task task)  {
         if (task.getDate()==null){
             task.setDate(ZonedDateTime.now());
         }
