@@ -14,8 +14,6 @@
                 <div class="card-content white-text">
                   <span class="card-title" th:text="${taskActive.name}">Name</span>
                    <p th:text="${taskActive.description}">decription goes here</p>
-                    <!--                    <p th:text="$taskActive.daysFailed}">shows how many days task in late</p>-->
-<!--                    <div th:insert="fragments :: failure_indicator"></div>-->
                 </div>
                 <div class="card-action" th:insert="fragments :: nav_taskActive"></div>
               </div>
@@ -42,25 +40,17 @@
 </span>
 
 <span th:fragment="nav_taskActive">
-    <button class="btn waves-effect waves-light blue" th:onclick="javascript:callCompleteTask([[${taskActive}]])"> <i
-            class="material-icons left">done_outline</i> Complete task</button>
-    <button class="btn waves-effect waves-light red" th:onclick="javascript:callDeleteTask([[${taskActive}]])"> <i
-            class="material-icons left">delete_outline</i> Delete </button>
+    <button class="btn waves-effect waves-light blue" th:onclick="javascript:callCompleteTask([[${taskActive}]])"> <b
+            class="material-icons left">done_outline</b> Complete task</button>
+    <button class="btn waves-effect waves-light red" th:onclick="javascript:callDeleteTask([[${taskActive}]])"> <b
+            class="material-icons left">delete_outline</b> Delete </button>
 </span>
 
 <span th:fragment="nav_taskFinished">
-    <button class="btn waves-effect waves-light orange" th:onclick="javascript:callUncompleteTask([[${taskFinished}]])"><i
-            class="material-icons left">undo</i> Mark as not completed </button>
-    <button class="btn waves-effect waves-light red" th:onclick="javascript:callDeleteTask([[${taskFinished}]])"><i
-            class="material-icons left">delete_outline</i> Delete </button>
+    <button class="btn waves-effect waves-light orange" th:onclick="javascript:callUncompleteTask([[${taskFinished}]])"><b
+            class="material-icons left">undo</b> Mark as not completed </button>
+    <button class="btn waves-effect waves-light red" th:onclick="javascript:callDeleteTask([[${taskFinished}]])"><b
+            class="material-icons left">delete_outline</b> Delete </button>
 </span>
-
-<!--<span th:fragment="failure_indicator">-->
-<!--    <div>-->
-<!--         <div th:each="${daysFailed}">-->
-<!--           <pre> 💩 </pre>-->
-<!--         </div>-->
-<!--    </div>-->
-<!--</span>-->
 
 </html>

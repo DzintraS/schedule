@@ -49,14 +49,6 @@ public class Task {
     }
 
 
-    public void createTask(String task1, String description, Frequency daily, ZonedDateTime now, boolean b) {
-    }
-
-    @Override
-    public String toString() {
-        return String.format("[(%d) %s | freq: %s | date: %s | done: %s ]", id, name, frequency, date, isCompleted);
-    }
-
     public String isCompletedToString() {
         return isCompleted ? "Completed" : "Not completed";
     }
