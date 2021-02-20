@@ -24,6 +24,17 @@ public class ScheduleController {
 
     private ObjectMapper mapper = new ObjectMapper();
 
+    //CRUD
+    //Create object
+    @PostMapping(value = "/task")
+    public Object saveTask(@RequestBody Task task) {
+        if (task.getDate() == null) {
+            task.setDate(ZonedDateTime.now());
+        }
+        return scheduleService.saveTask(task);
+    }
+
+    //Read
     @GetMapping(value = "/task")
     public List<Task> getAlltasks() {
         return scheduleService.getAllTasks();
@@ -34,14 +45,7 @@ public class ScheduleController {
         return scheduleService.getTasksByDate(date);
     }
 
-    @PostMapping(value = "/task")
-    public Object saveTask(@RequestBody Task task)  {
-        if (task.getDate()==null){
-            task.setDate(ZonedDateTime.now());
-        }
-        return scheduleService.saveTask(task);
-    }
-
+    //Update
     @PatchMapping(value = "/task")
     public Object updateTask(
             @Valid @RequestBody Task task) {
@@ -58,11 +62,11 @@ public class ScheduleController {
         return scheduleService.updateTask(id, false);
     }
 
+    //Delete
     @DeleteMapping(value = "/task")
     public Object deleteTask(@RequestParam(value = "id") Long id) {
         return scheduleService.deleteTask(id);
     }
-
 
 
 }
