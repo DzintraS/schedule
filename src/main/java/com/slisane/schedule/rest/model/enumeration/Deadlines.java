@@ -1,6 +1,6 @@
 package com.slisane.schedule.rest.model.enumeration;
 
-public enum Frequency {
+public enum Deadlines {
 
-    DAILY, WEEKLY, MONTHLY
+    DAY, WEEK, MONTH
 }

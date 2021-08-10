@@ -4,12 +4,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.slisane.schedule.rest.model.Task;
 import com.slisane.schedule.service.ScheduleService;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 //@Slf4js
@@ -53,20 +54,20 @@ public class ScheduleController {
     }
 
     @PatchMapping(value = "/task/setCompleted")
-    public Object setTaskCompleted(@RequestParam(value = "id") Long id) {
+    public Object setTaskCompleted(@NotNull @RequestParam(value = "id") Long id) {
         return scheduleService.updateTask(id, true);
     }
 
     @PatchMapping(value = "/task/setNotCompleted")
-    public Object setTaskNotCompleted(@RequestParam(value = "id") Long id) {
+    public Object setTaskNotCompleted(@NotNull @RequestParam(value = "id") Long id) {
         return scheduleService.updateTask(id, false);
     }
 
     //Delete
     @DeleteMapping(value = "/task")
-    public Object deleteTask(@RequestParam(value = "id") Long id) {
+    public Object deleteTask(@NotNull @RequestParam(value = "id") Long id) {
         return scheduleService.deleteTask(id);
     }
 
+    }
 
-}
