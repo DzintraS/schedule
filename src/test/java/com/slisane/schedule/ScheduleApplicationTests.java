@@ -9,5 +9,6 @@ class ScheduleApplicationTests {
 	@Test
 	void contextLoads() {
 	}
+//contextLoads checks if the application context starts at all
 
 }
