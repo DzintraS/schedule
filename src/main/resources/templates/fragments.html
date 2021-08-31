@@ -15,6 +15,7 @@
                 <div class="card-content white-text">
                   <span class="card-title" th:text="${taskActive.name}">Name</span>
                   <p th:text="${taskActive.description}">decription goes here</p>
+                  <p th:text="${taskActive.daysFailed}">daysFailed</p>
                 </div>
                 <div class="card-action" th:insert="fragments :: nav_taskActive"></div>
               </div>

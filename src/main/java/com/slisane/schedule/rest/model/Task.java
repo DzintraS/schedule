@@ -1,9 +1,8 @@
 package com.slisane.schedule.rest.model;
 
-import com.slisane.schedule.rest.model.enumeration.Frequency;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,20 +30,25 @@ public class Task {
     private String frequency;
 
     //    @NotNull
-//    @Pattern(regexp = "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{6}\\+\\d{2}:\\d{2}", message = "date does not match pattern") //TODO add validation
+//    @Pattern(regexp = "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{6}\\+\\d{2}:\\d{2}", message = "date does not match pattern")
     private ZonedDateTime date;
 
     private boolean isCompleted;
 
-    public Task(String name, String description, Frequency frequency, ZonedDateTime date, boolean isCompleted) {
+    private int daysFailed;
+
+    private int previousDaysFailed;
+    private String daysFailedAsString;
+
+    public Task(Long id, @NotBlank String name, String description, @NotNull() String frequency, ZonedDateTime date, boolean isCompleted, int daysFailed, int previousDaysFailed) {
+        this.id = id;
         this.name = name;
         this.description = description;
-        this.frequency = frequency.name();
+        this.frequency = frequency;
         this.date = date;
         this.isCompleted = isCompleted;
-    }
-
-    public void createTask(String task1, String description, Frequency daily, ZonedDateTime now, boolean b) {
+        this.daysFailed = daysFailed;
+        this.previousDaysFailed = previousDaysFailed;
     }
 
     @Override
@@ -56,5 +60,5 @@ public class Task {
         return isCompleted ? "Completed" : "Not completed";
     }
 
-    //TODO RESEARCH fix jsr303 validation messages are not returned
+
 }

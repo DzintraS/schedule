@@ -11,10 +11,10 @@ import static com.slisane.schedule.ScheduleTestBase.MAPPER;
 import static com.slisane.schedule.ScheduleTestBase.RESOURCES_DIR;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TaskTest {
+ class TaskTest {
 
     @Test
-    public void testSerialization() throws IOException {
+    void testSerialization() throws IOException {
         String json = new String(Files.readAllBytes(Paths.get(RESOURCES_DIR + "/model/taskJson.json")));
 
         Task task = MAPPER.readValue(json, Task.class);
